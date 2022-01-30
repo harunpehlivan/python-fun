@@ -1,4 +1,4 @@
-import curses 
+import curses
 from random import randint
 
 #constants
@@ -70,7 +70,7 @@ while key != ESC:
         # eat the food
         score += 1
         food = ()
-        while food == ():
+        while not food:
             food = (randint(1,WINDOW_HEIGHT-2), randint(1,WINDOW_WIDTH -2))
             if food in snake:
                 food = ()

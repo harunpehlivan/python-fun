@@ -20,8 +20,7 @@ def main():
 
     def get_year(movie_tag):
         moviesplit = movie_tag.text.split()
-        year = moviesplit[-1] # last item 
-        return year
+        return moviesplit[-1]
 
     years = [get_year(tag) for tag in movietags]
     actors_list =[tag['title'] for tag in inner_movietags] # access attribute 'title'

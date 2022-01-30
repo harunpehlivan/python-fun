@@ -53,9 +53,7 @@ if __name__ == "__main__":
             play_sound("What can I do for you?")
 
             note = get_audio()
-            note = audio_to_text(note)
-
-            if note:
+            if note := audio_to_text(note):
                 play_sound(note)
 
                 now = datetime.now().astimezone().isoformat()

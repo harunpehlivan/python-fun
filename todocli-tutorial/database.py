@@ -24,7 +24,7 @@ create_table()
 def insert_todo(todo: Todo):
     c.execute('select count(*) FROM todos')
     count = c.fetchone()[0]
-    todo.position = count if count else 0
+    todo.position = count or 0
     with conn:
         c.execute('INSERT INTO todos VALUES (:task, :category, :date_added, :date_completed, :status, :position)',
         {'task': todo.task, 'category': todo.category, 'date_added': todo.date_added,
@@ -34,10 +34,7 @@ def insert_todo(todo: Todo):
 def get_all_todos() -> List[Todo]:
     c.execute('select * from todos')
     results = c.fetchall()
-    todos = []
-    for result in results:
-        todos.append(Todo(*result))
-    return todos
+    return [Todo(*result) for result in results]
 
 
 def delete_todo(position):
